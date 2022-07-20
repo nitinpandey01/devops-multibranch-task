@@ -7,19 +7,19 @@ pipeline {
              
     stage('Build') {
       steps {
-        bat 'npm install'
+        sh 'npm install'
       }
     }
 
     stage('Lint') {
       steps {
-        bat 'npm run lint'
+        sh 'npm run lint'
       }
     }  
                 
     stage('Test') {
       steps {
-        bat 'npm test'
+        sh 'npm test'
       }
     }
   }
