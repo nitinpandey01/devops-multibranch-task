@@ -27,8 +27,8 @@ pipeline {
     always {
       emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}", 
                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], 
-               subject:  "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
-               attachLog: true
+               subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
+               attachLog: false
       }
     }
   }
