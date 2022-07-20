@@ -23,9 +23,12 @@ pipeline {
       }
     }
   }
-  post {
+  post {    
     always {
-      emailext body: 'Build successfully', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Jenkins'
+      emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}", 
+               recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], 
+               subject:  "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
+               attachLog: true
       }
     }
   }
