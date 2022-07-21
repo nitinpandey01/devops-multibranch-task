@@ -5,11 +5,10 @@ pipeline {
     
   stages {
              
-    stage('Build') {
+    stage('Install') {
       steps {
         sh 'npm install'
-        sh 'npm build'
-      }
+      } 
     }
 
     stage('Lint') {
@@ -23,6 +22,9 @@ pipeline {
         sh 'npm test'
       }
     }
+    stage('Build')
+    steps{
+      sh 'npm run build'
   }
   
   post {    
