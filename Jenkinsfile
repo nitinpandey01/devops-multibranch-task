@@ -22,12 +22,13 @@ pipeline {
         sh 'npm test'
       }
     }
+    
     stage('Build') {
-    steps{
-      sh 'npm run build'
+      steps {
+        sh 'npm run build'
+      }
     }
-  }
-  
+    
   post {    
     always {
       emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}", 
